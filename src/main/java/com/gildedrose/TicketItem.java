@@ -15,11 +15,9 @@ class TicketItem extends ImprovableItem {
         super.updateQuality();
 
         if (item.sellIn < 11)
-            if (item.quality < MAXIMUM_QUALITY)
-                item.quality = item.quality + 1;
+            super.updateQuality();
         if (item.sellIn < 6)
-            if (item.quality < MAXIMUM_QUALITY)
-                item.quality = item.quality + 1;
+            super.updateQuality();
     }
 
     @Override
