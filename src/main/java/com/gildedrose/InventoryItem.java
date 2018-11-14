@@ -2,7 +2,10 @@ package com.gildedrose;
 
 class InventoryItem {
 
-    private final Item item;
+    static final int SELLIN_THRESHOLD = 0;
+    static final int MINIMUM_QUALITY = 0;
+
+    final Item item;
 
     InventoryItem(final Item item) {
         this.item = item;
@@ -18,51 +21,14 @@ class InventoryItem {
     }
 
     protected void updateQuality() {
-        if (item.name.equals("Aged Brie") || item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
-            updateImprovableItemQuality();
-        else
-            decreaseQuality();
-    }
-
-    private void updateImprovableItemQuality() {
-        if (item.quality >= 50)
-            return;
-
-        item.quality = item.quality + 1;
-
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
-            updateBackstagePassQuality();
-    }
-
-    private void updateBackstagePassQuality() {
-        if (item.sellIn < 11)
-            increaseQuality();
-        if (item.sellIn < 6)
-            increaseQuality();
+        if (item.quality > MINIMUM_QUALITY)
+            item.quality = item.quality - 1;
     }
 
     protected void updateSellIn() {
         item.sellIn = item.sellIn - 1;
 
-        if (item.sellIn < 0) {
-            if (item.name.equals("Aged Brie")) {
-                increaseQuality();
-            } else {
-                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
-                    item.quality = 0;
-                else
-                    decreaseQuality();
-            }
-        }
-    }
-
-    private void increaseQuality() {
-        if (item.quality < 50)
-            item.quality = item.quality + 1;
-    }
-
-    private void decreaseQuality() {
-        if (item.quality > 0)
+        if (item.sellIn < SELLIN_THRESHOLD && item.quality > MINIMUM_QUALITY)
             item.quality = item.quality - 1;
     }
 
