@@ -137,4 +137,14 @@ class GildedRoseAcceptanceTest {
 
         assertThat(gildedRose.getItemQuality(0)).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("decrease the quality of a conjured item twice")
+    void should_decrease_the_quality_of_a_conjured_item_twice_when_the_inventory_is_updated() {
+        final GildedRose gildedRose = GildedRose.of(ConjuredItem.of(new Item("Conjured Dummy", 7, 5)));
+
+        gildedRose.updateQuality();
+
+        assertThat(gildedRose.getItemQuality(0)).isEqualTo(3);
+    }
 }
