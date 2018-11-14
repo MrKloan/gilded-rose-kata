@@ -80,4 +80,16 @@ class GildedRoseAcceptanceTest {
 
         assertThat(gildedRose.getItemQuality(0)).isEqualTo(7);
     }
+
+    @Test
+    @DisplayName("not increase the quality of an item above 50")
+    void should_not_increase_the_quality_of_an_item_above_fifty_when_the_inventory_is_updated() {
+        final Item item = new Item("Aged Brie", 7, 50);
+        final Item[] items = new Item[]{item};
+        final GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertThat(gildedRose.getItemQuality(0)).isEqualTo(50);
+    }
 }
