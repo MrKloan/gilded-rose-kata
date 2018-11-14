@@ -64,4 +64,8 @@ class GildedRose {
     int getItemQuality(final int itemIndex) {
         return items[itemIndex].quality;
     }
+
+    int getItemSellIn(final int itemIndex) {
+        return items[itemIndex].sellIn;
+    }
 }
