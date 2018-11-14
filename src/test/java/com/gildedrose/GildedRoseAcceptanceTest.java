@@ -139,8 +139,7 @@ class GildedRoseAcceptanceTest {
     }
 
     private GildedRose withInventoryContaining(final String name, final int sellIn, final int quality) {
-        return new GildedRose(new Item[]{
-                new Item(name, sellIn, quality)
-        });
+        final Item item = new Item(name, sellIn, quality);
+        return GildedRose.of(InventoryItem.of(item));
     }
 }

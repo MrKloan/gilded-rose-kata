@@ -2,7 +2,7 @@ package com.gildedrose;
 
 class InventoryItem {
 
-    private final Item item;
+    final Item item;
 
     private InventoryItem(final Item item) {
         this.item = item;
