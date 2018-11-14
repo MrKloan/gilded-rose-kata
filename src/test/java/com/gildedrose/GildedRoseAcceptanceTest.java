@@ -104,4 +104,16 @@ class GildedRoseAcceptanceTest {
 
         assertThat(gildedRose.getItemQuality(0)).isEqualTo(80);
     }
+
+    @Test
+    @DisplayName("not decrease the sellIn of a legendary item")
+    void should_not_decrease_the_sellin_of_a_legendary_item_when_the_inventory_is_updated() {
+        final Item item = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
+        final Item[] items = new Item[]{item};
+        final GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertThat(gildedRose.getItemSellIn(0)).isEqualTo(0);
+    }
 }
