@@ -152,4 +152,16 @@ class GildedRoseAcceptanceTest {
 
         assertThat(gildedRose.getItemQuality(0)).isEqualTo(23);
     }
+
+    @Test
+    @DisplayName("drop the quality of a Backstage Pass to 0 when its sellIn negative")
+    void should_drop_the_quality_of_a_backstage_pass_to_zero_when_the_inventory_is_updated_and_its_sellin_is_negative() {
+        final Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20);
+        final Item[] items = new Item[]{item};
+        final GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertThat(gildedRose.getItemQuality(0)).isEqualTo(0);
+    }
 }
