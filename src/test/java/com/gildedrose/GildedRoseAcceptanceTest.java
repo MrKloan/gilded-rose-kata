@@ -116,4 +116,16 @@ class GildedRoseAcceptanceTest {
 
         assertThat(gildedRose.getItemSellIn(0)).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("increase the quality of a Backstage Pass when its sellIn is above 10")
+    void should_increase_the_quality_of_a_backstage_pass_when_the_inventory_is_updated_and_its_sellin_is_above_10() {
+        final Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
+        final Item[] items = new Item[]{item};
+        final GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertThat(gildedRose.getItemQuality(0)).isEqualTo(21);
+    }
 }
