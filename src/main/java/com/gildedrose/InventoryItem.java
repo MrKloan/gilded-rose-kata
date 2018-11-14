@@ -4,7 +4,7 @@ class InventoryItem {
 
     private final Item item;
 
-    private InventoryItem(final Item item) {
+    InventoryItem(final Item item) {
         this.item = item;
     }
 
@@ -17,10 +17,7 @@ class InventoryItem {
         updateSellIn();
     }
 
-    private void updateQuality() {
-        if (item.name.equals("Sulfuras, Hand of Ragnaros"))
-            return;
-
+    protected void updateQuality() {
         if (item.name.equals("Aged Brie") || item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
             updateImprovableItemQuality();
         else
@@ -44,10 +41,7 @@ class InventoryItem {
             increaseQuality();
     }
 
-    private void updateSellIn() {
-        if (item.name.equals("Sulfuras, Hand of Ragnaros"))
-            return;
-
+    protected void updateSellIn() {
         item.sellIn = item.sellIn - 1;
 
         if (item.sellIn < 0) {

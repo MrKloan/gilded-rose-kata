@@ -81,7 +81,7 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("not decrease the quality of a legendary item")
     void should_not_decrease_the_quality_of_a_legendary_item_when_the_inventory_is_updated() {
-        final GildedRose gildedRose = withInventoryContaining("Sulfuras, Hand of Ragnaros", 0, 80);
+        final GildedRose gildedRose = GildedRose.of(LegendaryItem.of("Sulfuras, Hand of Ragnaros"));
 
         gildedRose.updateQuality();
 
@@ -91,7 +91,7 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("not decrease the sellIn of a legendary item")
     void should_not_decrease_the_sellin_of_a_legendary_item_when_the_inventory_is_updated() {
-        final GildedRose gildedRose = withInventoryContaining("Sulfuras, Hand of Ragnaros", 0, 80);
+        final GildedRose gildedRose = GildedRose.of(LegendaryItem.of("Sulfuras, Hand of Ragnaros"));
 
         gildedRose.updateQuality();
 
