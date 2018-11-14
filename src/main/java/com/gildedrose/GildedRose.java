@@ -1,79 +1,30 @@
 package com.gildedrose;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
 class GildedRose {
 
-    private final InventoryItem[] inventoryItems;
+    private final List<InventoryItem> items;
 
-    private GildedRose(final InventoryItem[] inventoryItems) {
-        this.inventoryItems = inventoryItems;
+    private GildedRose(final List<InventoryItem> items) {
+        this.items = items;
     }
 
     static GildedRose of(final InventoryItem... inventoryItems) {
-        return new GildedRose(inventoryItems);
+        return new GildedRose(asList(inventoryItems));
     }
 
     void updateQuality() {
-        for (final InventoryItem item : inventoryItems) {
-            update(item.item);
-        }
-    }
-
-    private void update(final Item item) {
-        if (!item.name.equals("Aged Brie")
-                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            if (item.quality > 0) {
-                if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                    item.quality = item.quality - 1;
-                }
-            }
-        } else {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-
-                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            item.sellIn = item.sellIn - 1;
-        }
-
-        if (item.sellIn < 0) {
-            if (!item.name.equals("Aged Brie")) {
-                if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.quality > 0) {
-                        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                } else {
-                    item.quality = 0;
-                }
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
-        }
+        items.forEach(InventoryItem::update);
     }
 
     int getItemQuality(final int itemIndex) {
-        return inventoryItems[itemIndex].getQuality();
+        return items.get(itemIndex).getQuality();
     }
 
     int getItemSellIn(final int itemIndex) {
-        return inventoryItems[itemIndex].getSellIn();
+        return items.get(itemIndex).getSellIn();
     }
 }
