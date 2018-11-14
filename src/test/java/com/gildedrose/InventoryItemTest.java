@@ -17,4 +17,14 @@ class InventoryItemTest {
 
         assertThat(result).isEqualTo("Dummy, 3, 7");
     }
+
+    @Test
+    @DisplayName("return the item sellIn")
+    void should_get_the_item_sellin() {
+        final Item item = new Item("Dummy", 3, 7);
+
+        final int sellIn = InventoryItem.of(item).getSellIn();
+
+        assertThat(sellIn).isEqualTo(3);
+    }
 }

@@ -12,6 +12,10 @@ class InventoryItem {
         return new InventoryItem(item);
     }
 
+    int getSellIn() {
+        return item.sellIn;
+    }
+
     @Override
     public String toString() {
         return item.toString();
