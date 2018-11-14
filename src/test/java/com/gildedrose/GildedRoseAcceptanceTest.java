@@ -56,4 +56,16 @@ class GildedRoseAcceptanceTest {
 
         assertThat(gildedRose.getItemQuality(0)).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("increase the quality of Aged Brie when its sellIn is positive")
+    void should_increase_the_quality_of_aged_brie_when_the_inventory_is_updated_and_its_sellin_is_positive() {
+        final Item item = new Item("Aged Brie", 3, 6);
+        final Item[] items = new Item[]{item};
+        final GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertThat(gildedRose.getItemQuality(0)).isEqualTo(7);
+    }
 }
