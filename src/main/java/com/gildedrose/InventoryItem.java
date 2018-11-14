@@ -16,6 +16,10 @@ class InventoryItem {
         return item.sellIn;
     }
 
+    int getQuality() {
+        return item.quality;
+    }
+
     @Override
     public String toString() {
         return item.toString();

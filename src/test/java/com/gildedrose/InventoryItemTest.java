@@ -27,4 +27,14 @@ class InventoryItemTest {
 
         assertThat(sellIn).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("return the item quality")
+    void should_get_the_item_quality() {
+        final Item item = new Item("Dummy", 3, 7);
+
+        final int sellIn = InventoryItem.of(item).getQuality();
+
+        assertThat(sellIn).isEqualTo(7);
+    }
 }
