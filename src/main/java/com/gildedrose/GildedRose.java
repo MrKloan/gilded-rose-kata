@@ -60,4 +60,8 @@ class GildedRose {
             }
         }
     }
+
+    int getItemQuality(final int itemIndex) {
+        return items[itemIndex].quality;
+    }
 }
