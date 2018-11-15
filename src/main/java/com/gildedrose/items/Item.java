@@ -17,26 +17,26 @@ public class Item {
     }
 
     public final void update() {
-        final SellIn updatedSellIn = updateSellIn();
+        final SellIn updatedSellIn = computeSellIn();
 
-        quality = updateQuality(updatedSellIn);
+        quality = computeQuality(updatedSellIn);
         sellIn = updatedSellIn;
     }
 
-    protected SellIn updateSellIn() {
+    protected SellIn computeSellIn() {
         return sellIn.update();
     }
 
-    protected int updateQuality(final SellIn updatedSellIn) {
-        int updatedQuality = computeQuality(quality);
+    protected int computeQuality(final SellIn updatedSellIn) {
+        int updatedQuality = updateQuality(quality);
 
         if (updatedSellIn.isExpired())
-            updatedQuality = computeQuality(updatedQuality);
+            updatedQuality = updateQuality(updatedQuality);
 
         return updatedQuality;
     }
 
-    protected int computeQuality(final int quality) {
+    protected int updateQuality(final int quality) {
         return (quality > 0)
                 ? quality - 1
                 : quality;

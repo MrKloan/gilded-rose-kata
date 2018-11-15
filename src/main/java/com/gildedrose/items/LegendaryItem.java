@@ -14,12 +14,12 @@ public class LegendaryItem extends Item {
     }
 
     @Override
-    protected SellIn updateSellIn() {
+    protected SellIn computeSellIn() {
         return sellIn;
     }
 
     @Override
-    protected int updateQuality(final SellIn updatedSellIn) {
+    protected int computeQuality(final SellIn updatedSellIn) {
         return quality;
     }
 }
