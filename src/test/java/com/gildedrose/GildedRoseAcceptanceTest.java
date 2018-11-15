@@ -68,7 +68,7 @@ class GildedRoseAcceptanceTest {
     }
 
     @Test
-    @DisplayName("not decrease the sell in and quality of a legendary item")
+    @DisplayName("increase the quality of an improvable item")
     void should_increase_the_quality_of_an_improvable_item_when_the_inventory_is_updated() {
         final GildedRose gildedRose = new GildedRose(inventory(
                 Item.of("Aged Brie", 3, 6)
@@ -78,6 +78,19 @@ class GildedRoseAcceptanceTest {
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Aged Brie] Sell in: 2, Quality: 7");
+    }
+
+    @Test
+    @DisplayName("increase the quality of an improvable item twice when its sell in is negative")
+    void should_increase_the_quality_of_an_improvable_item_twice_when_the_inventory_is_updated_and_its_sell_in_is_negative() {
+        final GildedRose gildedRose = new GildedRose(inventory(
+                Item.of("Aged Brie", 0, 5)
+        ));
+
+        gildedRose.updateQuality();
+        gildedRose.printInventory(inventoryPrinter);
+
+        verify(inventoryPrinter).print("[Aged Brie] Sell in: -1, Quality: 7");
     }
 
     private Item[] inventory(final Item item) {
