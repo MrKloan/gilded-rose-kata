@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+import com.gildedrose.inventory.Inventory;
+import com.gildedrose.inventory.InventoryPrinter;
+import com.gildedrose.items.Item;
+
 import static java.lang.Integer.parseInt;
 
 public class TextTestFixture {

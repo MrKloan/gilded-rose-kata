@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.items;
 
 public class Item {
 
@@ -12,11 +12,11 @@ public class Item {
         this.quality = quality;
     }
 
-    static Item of(final String name, final int sellIn, final int quality) {
+    public static Item of(final String name, final int sellIn, final int quality) {
         return new Item(name, sellIn, quality);
     }
 
-    void update() {
+    public void update() {
         if (name.equals("Sulfuras, Hand of Ragnaros"))
             return;
 

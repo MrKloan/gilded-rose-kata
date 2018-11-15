@@ -1,10 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.inventory;
+
+import com.gildedrose.items.Item;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
 
-class Inventory {
+public class Inventory {
 
     private final List<Item> items;
 
@@ -12,17 +14,17 @@ class Inventory {
         this.items = items;
     }
 
-    static Inventory of(final Item... items) {
+    public static Inventory of(final Item... items) {
         return new Inventory(asList(items));
     }
 
-    void update() {
+    public void update() {
         for (final Item item : items) {
             item.update();
         }
     }
 
-    void print(final InventoryPrinter inventoryPrinter) {
+    public void print(final InventoryPrinter inventoryPrinter) {
         items.stream()
                 .map(Item::toString)
                 .forEach(inventoryPrinter::print);

@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.inventory.Inventory;
+import com.gildedrose.inventory.InventoryPrinter;
+
 class GildedRose {
 
     private Inventory inventory;

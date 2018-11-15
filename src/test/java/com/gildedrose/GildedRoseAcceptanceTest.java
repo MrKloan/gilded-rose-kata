@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.inventory.Inventory;
+import com.gildedrose.inventory.InventoryPrinter;
+import com.gildedrose.items.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

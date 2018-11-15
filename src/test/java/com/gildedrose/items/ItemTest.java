@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.items;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
