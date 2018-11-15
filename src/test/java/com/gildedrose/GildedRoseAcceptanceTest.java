@@ -93,6 +93,19 @@ class GildedRoseAcceptanceTest {
         verify(inventoryPrinter).print("[Aged Brie] Sell in: -1, Quality: 7");
     }
 
+    @Test
+    @DisplayName("not increase the quality of an improvable item above 50")
+    void should_not_increase_the_quality_of_an_improvable_item_above_fifty_when_the_inventory_is_updated() {
+        final GildedRose gildedRose = new GildedRose(inventory(
+                Item.of("Aged Brie", 7, 50)
+        ));
+
+        gildedRose.updateQuality();
+        gildedRose.printInventory(inventoryPrinter);
+
+        verify(inventoryPrinter).print("[Aged Brie] Sell in: 6, Quality: 50");
+    }
+
     private Item[] inventory(final Item item) {
         return new Item[]{item};
     }
