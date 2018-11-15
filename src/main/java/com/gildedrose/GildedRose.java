@@ -1,13 +1,16 @@
 package com.gildedrose;
 
-class GildedRose {
-    Item[] items;
+import static java.util.Arrays.stream;
 
-    public GildedRose(Item[] items) {
+class GildedRose {
+
+    private Item[] items;
+
+    GildedRose(Item[] items) {
         this.items = items;
     }
 
-    public void updateQuality() {
+    void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -58,5 +61,11 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    void printInventory(final InventoryPrinter inventoryPrinter) {
+        stream(items)
+                .map(Item::toString)
+                .forEach(inventoryPrinter::print);
     }
 }
