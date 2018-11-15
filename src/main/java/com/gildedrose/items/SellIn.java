@@ -18,6 +18,10 @@ class SellIn {
         return days < EXPIRY_THRESHOLD;
     }
 
+    boolean lessThan(final int days) {
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Sell in: " + days;

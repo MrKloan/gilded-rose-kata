@@ -29,6 +29,16 @@ class SellInTest {
     }
 
     @Test
+    @DisplayName("not be less than the provided number of days")
+    void should_not_be_sold_in_less_than_the_provided_number_of_days() {
+        final SellIn sellIn = SellIn.of(12);
+
+        final boolean isLessThan = sellIn.lessThan(10);
+
+        assertThat(isLessThan).isFalse();
+    }
+
+    @Test
     @DisplayName("be formatted as a string")
     void should_format_the_sell_in_as_a_string() {
         final SellIn sellIn = SellIn.of(7);
