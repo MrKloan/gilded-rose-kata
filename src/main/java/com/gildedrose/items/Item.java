@@ -4,16 +4,16 @@ public class Item {
 
     private final String name;
     SellIn sellIn;
-    int quality;
+    Quality quality;
 
-    Item(final String name, final SellIn sellIn, final int quality) {
+    Item(final String name, final SellIn sellIn, final Quality quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
     }
 
     public static Item of(final String name, final SellIn sellIn, final int quality) {
-        return new Item(name, sellIn, quality);
+        return new Item(name, sellIn, Quality.of(quality));
     }
 
     public final void update() {
@@ -27,8 +27,8 @@ public class Item {
         return sellIn.update();
     }
 
-    protected int computeQuality(final SellIn updatedSellIn) {
-        int updatedQuality = updateQuality(quality);
+    protected Quality computeQuality(final SellIn updatedSellIn) {
+        Quality updatedQuality = updateQuality(quality);
 
         if (updatedSellIn.isExpired())
             updatedQuality = updateQuality(updatedQuality);
@@ -36,14 +36,12 @@ public class Item {
         return updatedQuality;
     }
 
-    protected int updateQuality(final int quality) {
-        return (quality > 0)
-                ? quality - 1
-                : quality;
+    protected Quality updateQuality(final Quality quality) {
+        return quality.decrease();
     }
 
     @Override
     public final String toString() {
-        return "[" + this.name + "] " + this.sellIn + ", Quality: " + this.quality;
+        return "[" + this.name + "] " + this.sellIn + ", " + this.quality;
     }
 }

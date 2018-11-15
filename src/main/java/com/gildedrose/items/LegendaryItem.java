@@ -3,7 +3,7 @@ package com.gildedrose.items;
 public class LegendaryItem extends Item {
 
     private static final SellIn LEGENDARY_SELL_IN = SellIn.of(0);
-    private static final int LEGENDARY_QUALITY = 80;
+    private static final Quality LEGENDARY_QUALITY = Quality.of(80);
 
     private LegendaryItem(final String name) {
         super(name, LEGENDARY_SELL_IN, LEGENDARY_QUALITY);
@@ -19,7 +19,7 @@ public class LegendaryItem extends Item {
     }
 
     @Override
-    protected int computeQuality(final SellIn updatedSellIn) {
+    protected Quality computeQuality(final SellIn updatedSellIn) {
         return quality;
     }
 }
