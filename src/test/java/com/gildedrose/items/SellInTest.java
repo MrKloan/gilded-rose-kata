@@ -59,6 +59,26 @@ class SellInTest {
     }
 
     @Test
+    @DisplayName("be equal to another SellIn holding the same number of days")
+    void should_be_equal() {
+        final SellIn firstSellIn = SellIn.of(7);
+        final SellIn secondSellIn = SellIn.of(7);
+
+        assertThat(firstSellIn).isEqualTo(secondSellIn);
+        assertThat(firstSellIn.hashCode()).isEqualTo(secondSellIn.hashCode());
+    }
+
+    @Test
+    @DisplayName("not be equal to another SellIn holding a different number of days")
+    void should_not_be_equal() {
+        final SellIn firstSellIn = SellIn.of(7);
+        final SellIn secondSellIn = SellIn.of(5);
+
+        assertThat(firstSellIn).isNotEqualTo(secondSellIn);
+        assertThat(firstSellIn.hashCode()).isNotEqualTo(secondSellIn.hashCode());
+    }
+
+    @Test
     @DisplayName("be formatted as a string")
     void should_format_the_sell_in_as_a_string() {
         final SellIn sellIn = SellIn.of(7);
