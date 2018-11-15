@@ -19,7 +19,7 @@ class SellIn {
     }
 
     boolean lessThan(final int days) {
-        return false;
+        return this.days < days;
     }
 
     @Override
