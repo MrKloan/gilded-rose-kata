@@ -17,14 +17,20 @@ public class Item {
     }
 
     void update() {
-        if (!name.equals("Aged Brie")
-                && !name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            if (quality > 0) {
-                if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                    quality = quality - 1;
-                }
-            }
-        } else {
+        if (name.equals("Sulfuras, Hand of Ragnaros"))
+            return;
+
+        final int updatedSellIn = this.sellIn - 1;
+
+        quality = computeQuality(quality);
+        quality = computeQualityAfterSellInUpdate(updatedSellIn, quality);
+
+        this.sellIn = updatedSellIn;
+    }
+
+    private int computeQuality(int quality) {
+        if (name.equals("Aged Brie")
+                || name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (quality < 50) {
                 quality = quality + 1;
 
@@ -42,29 +48,31 @@ public class Item {
                     }
                 }
             }
+        } else if (quality > 0) {
+            quality = quality - 1;
         }
 
-        if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-            sellIn = sellIn - 1;
-        }
+        return quality;
+    }
 
+    private int computeQualityAfterSellInUpdate(int sellIn, int quality) {
         if (sellIn < 0) {
-            if (!name.equals("Aged Brie")) {
-                if (!name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (quality > 0) {
-                        if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-                            quality = quality - 1;
-                        }
-                    }
-                } else {
-                    quality = 0;
-                }
-            } else {
+            if (name.equals("Aged Brie")) {
                 if (quality < 50) {
                     quality = quality + 1;
                 }
+            } else {
+                if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    quality = 0;
+                } else {
+                    if (quality > 0) {
+                        quality = quality - 1;
+                    }
+                }
             }
         }
+
+        return quality;
     }
 
     @Override
