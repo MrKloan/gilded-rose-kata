@@ -12,6 +12,10 @@ class SellIn {
         return new SellIn(days);
     }
 
+    boolean hasPassed() {
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Sell in: " + days;
