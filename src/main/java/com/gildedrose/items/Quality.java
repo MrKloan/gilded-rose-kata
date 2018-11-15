@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Quality {
 
     private static final int MAXIMUM_QUALITY = 50;
+    private static final int MINIMUM_QUALITY = 0;
 
     private final int value;
 
@@ -24,6 +25,9 @@ public class Quality {
     }
 
     Quality decrease() {
+        if (value == MINIMUM_QUALITY)
+            return this;
+
         return of(value - 1);
     }
 
