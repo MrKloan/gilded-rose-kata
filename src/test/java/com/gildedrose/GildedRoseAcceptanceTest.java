@@ -28,6 +28,19 @@ class GildedRoseAcceptanceTest {
         verify(inventoryPrinter).print("[Dummy] Sell in: 0, Quality: 0");
     }
 
+    @Test
+    @DisplayName("decrease the quality of the stored item twice when its sell in is negative")
+    void should_decrease_quality_of_the_stored_item_twice_when_the_inventory_is_updated_and_its_sell_in_is_negative() {
+        final GildedRose gildedRose = new GildedRose(inventory(
+                Item.of("Dummy", 0, 3)
+        ));
+
+        gildedRose.updateQuality();
+        gildedRose.printInventory(inventoryPrinter);
+
+        verify(inventoryPrinter).print("[Dummy] Sell in: -1, Quality: 1");
+    }
+
     private Item[] inventory(final Item item) {
         return new Item[]{item};
     }
