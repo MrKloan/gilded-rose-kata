@@ -11,22 +11,18 @@ public class TicketItem extends ImprovableItem {
     }
 
     @Override
-    protected int updateQuality(final int updatedSellIn, int quality) {
+    protected int updateQuality(final int updatedSellIn) {
+        int updatedQuality = computeQuality(quality);
+
         if (updatedSellIn < 0)
             return 0;
 
-        if (sellIn < 11) {
-            if (quality < 50) {
-                quality = quality + 1;
-            }
-        }
+        if (sellIn < 11)
+            updatedQuality = computeQuality(updatedQuality);
 
-        if (sellIn < 6) {
-            if (quality < 50) {
-                quality = quality + 1;
-            }
-        }
+        if (sellIn < 6)
+            updatedQuality = computeQuality(updatedQuality);
 
-        return super.updateQuality(updatedSellIn, quality);
+        return updatedQuality;
     }
 }

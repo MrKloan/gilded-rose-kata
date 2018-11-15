@@ -19,7 +19,7 @@ public class LegendaryItem extends Item {
     }
 
     @Override
-    protected int updateQuality(final int updatedSellIn, final int quality) {
+    protected int updateQuality(final int updatedSellIn) {
         return quality;
     }
 }

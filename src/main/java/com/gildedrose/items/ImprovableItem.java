@@ -11,15 +11,9 @@ public class ImprovableItem extends Item {
     }
 
     @Override
-    protected int updateQuality(final int updatedSellIn, int quality) {
-        if (quality < 50) {
-            quality = quality + 1;
-        }
-
-        if (updatedSellIn < 0 && quality < 50) {
-            quality = quality + 1;
-        }
-
-        return quality;
+    protected int computeQuality(final int quality) {
+        return (quality < 50)
+                ? quality + 1
+                : quality;
     }
 }
