@@ -27,8 +27,4 @@ class Inventory {
                 .map(Item::toString)
                 .forEach(inventoryPrinter::print);
     }
-
-    List<Item> getItems() {
-        return items;
-    }
 }

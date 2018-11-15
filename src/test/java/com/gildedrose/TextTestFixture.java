@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import static java.lang.Integer.parseInt;
+
 public class TextTestFixture {
 
     public static void main(final String[] args) {
@@ -15,23 +17,29 @@ public class TextTestFixture {
                 Item.of("Conjured Mana Cake", 3, 6)
         );
 
-        final GildedRose gilded = new GildedRose(inventory);
+        final GildedRose gildedRose = new GildedRose(inventory);
+        final InventoryPrinter inventoryPrinter = new ConsolePrinter();
 
-        int days = 2;
-        if (args.length > 0) {
-            days = Integer.parseInt(args[0]) + 1;
-        }
+        final int days = (args.length > 0)
+                ? parseInt(args[0]) + 1
+                : 2;
 
         for (int i = 0; i < days; i++) {
-            System.out.println("-------- day " + i + " --------");
-            System.out.println("name, sellIn, quality");
+            inventoryPrinter.print("-------- Day " + i + " --------");
+            inventoryPrinter.print("Name, Sell in, Quality");
 
-            for (final Item item : inventory.getItems()) {
-                System.out.println(item);
-            }
+            gildedRose.printInventory(inventoryPrinter);
 
-            System.out.println();
-            gilded.updateInventory();
+            inventoryPrinter.print("");
+            gildedRose.updateInventory();
+        }
+    }
+
+    private static class ConsolePrinter implements InventoryPrinter {
+
+        @Override
+        public void print(final String message) {
+            System.out.println(message);
         }
     }
 }
