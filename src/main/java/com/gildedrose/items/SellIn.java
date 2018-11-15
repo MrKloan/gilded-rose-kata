@@ -2,6 +2,8 @@ package com.gildedrose.items;
 
 class SellIn {
 
+    private static final int EXPIRY_THRESHOLD = 0;
+
     private final int days;
 
     private SellIn(final int days) {
@@ -12,8 +14,8 @@ class SellIn {
         return new SellIn(days);
     }
 
-    boolean hasPassed() {
-        return false;
+    boolean isExpired() {
+        return days < EXPIRY_THRESHOLD;
     }
 
     @Override

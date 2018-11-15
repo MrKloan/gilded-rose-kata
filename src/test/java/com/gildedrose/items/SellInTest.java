@@ -9,13 +9,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SellInTest {
 
     @Test
-    @DisplayName("not has passed when its value is positive")
-    void should_not_have_passed_when_the_sell_in_value_is_positive() {
+    @DisplayName("not be expired when its value is positive")
+    void should_not_be_expired_when_the_sell_in_value_is_positive() {
         final SellIn sellIn = SellIn.of(7);
 
-        final boolean hasPassed = sellIn.hasPassed();
+        final boolean isExpired = sellIn.isExpired();
 
-        assertThat(hasPassed).isFalse();
+        assertThat(isExpired).isFalse();
+    }
+
+    @Test
+    @DisplayName("be expired when its value is positive")
+    void should_be_expired_when_the_sell_in_value_is_negative() {
+        final SellIn sellIn = SellIn.of(-1);
+
+        final boolean isExpired = sellIn.isExpired();
+
+        assertThat(isExpired).isTrue();
     }
 
     @Test
