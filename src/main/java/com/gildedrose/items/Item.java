@@ -3,8 +3,8 @@ package com.gildedrose.items;
 public class Item {
 
     private final String name;
-    SellIn sellIn;
-    Quality quality;
+    final SellIn sellIn;
+    final Quality quality;
 
     Item(final String name, final SellIn sellIn, final Quality quality) {
         this.name = name;
@@ -16,11 +16,11 @@ public class Item {
         return new Item(name, sellIn, quality);
     }
 
-    public final void update() {
+    public final Item update() {
         final SellIn updatedSellIn = computeSellIn();
+        final Quality updatedQuality = computeQuality(updatedSellIn);
 
-        quality = computeQuality(updatedSellIn);
-        sellIn = updatedSellIn;
+        return of(name, updatedSellIn, updatedQuality);
     }
 
     protected SellIn computeSellIn() {

@@ -12,7 +12,7 @@ class GildedRose {
     }
 
     void updateInventory() {
-        inventory.update();
+        inventory = inventory.update();
     }
 
     void printInventory(final InventoryPrinter inventoryPrinter) {
