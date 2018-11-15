@@ -49,6 +49,16 @@ class SellInTest {
     }
 
     @Test
+    @DisplayName("decrement its number of days when it is updated")
+    void should_decrement_the_number_of_days_when_the_sell_in_is_updated() {
+        final SellIn sellIn = SellIn.of(7);
+
+        final SellIn updatedSellIn = sellIn.update();
+
+        assertThat(updatedSellIn).isEqualTo(SellIn.of(6));
+    }
+
+    @Test
     @DisplayName("be formatted as a string")
     void should_format_the_sell_in_as_a_string() {
         final SellIn sellIn = SellIn.of(7);
