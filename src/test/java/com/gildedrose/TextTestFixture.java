@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public class TextTestFixture {
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final Inventory inventory = Inventory.of(
                 Item.of("+5 Dexterity Vest", 10, 20),
                 Item.of("Aged Brie", 2, 0),

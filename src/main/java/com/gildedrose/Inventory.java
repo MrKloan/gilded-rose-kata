@@ -16,6 +16,12 @@ class Inventory {
         return new Inventory(asList(items));
     }
 
+    void update() {
+        for (final Item item : items) {
+            item.update();
+        }
+    }
+
     void print(final InventoryPrinter inventoryPrinter) {
         items.stream()
                 .map(Item::toString)
