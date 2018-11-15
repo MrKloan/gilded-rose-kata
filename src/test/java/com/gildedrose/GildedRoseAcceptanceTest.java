@@ -41,6 +41,19 @@ class GildedRoseAcceptanceTest {
         verify(inventoryPrinter).print("[Dummy] Sell in: -1, Quality: 1");
     }
 
+    @Test
+    @DisplayName("not decrease the quality of the stored item below 0")
+    void should_not_decrease_the_quality_of_the_stored_item_below_zero_when_the_inventory_is_updated() {
+        final GildedRose gildedRose = new GildedRose(inventory(
+                Item.of("Dummy", 3, 0)
+        ));
+
+        gildedRose.updateQuality();
+        gildedRose.printInventory(inventoryPrinter);
+
+        verify(inventoryPrinter).print("[Dummy] Sell in: 2, Quality: 0");
+    }
+
     private Item[] inventory(final Item item) {
         return new Item[]{item};
     }
