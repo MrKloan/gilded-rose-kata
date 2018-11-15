@@ -6,8 +6,8 @@ public class ImprovableItem extends Item {
         super(name, sellIn, quality);
     }
 
-    public static ImprovableItem of(final String name, final int sellIn, final int quality) {
-        return new ImprovableItem(name, SellIn.of(sellIn), Quality.of(quality));
+    public static ImprovableItem of(final String name, final SellIn sellIn, final Quality quality) {
+        return new ImprovableItem(name, sellIn, quality);
     }
 
     @Override

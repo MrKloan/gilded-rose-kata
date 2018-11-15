@@ -10,8 +10,8 @@ public class TicketItem extends ImprovableItem {
         super(name, sellIn, quality);
     }
 
-    public static TicketItem of(final String name, final int sellIn, final int quality) {
-        return new TicketItem(name, SellIn.of(sellIn), Quality.of(quality));
+    public static TicketItem of(final String name, final SellIn sellIn, final Quality quality) {
+        return new TicketItem(name, sellIn, quality);
     }
 
     @Override

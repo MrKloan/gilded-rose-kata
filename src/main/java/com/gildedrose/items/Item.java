@@ -12,8 +12,8 @@ public class Item {
         this.quality = quality;
     }
 
-    public static Item of(final String name, final SellIn sellIn, final int quality) {
-        return new Item(name, sellIn, Quality.of(quality));
+    public static Item of(final String name, final SellIn sellIn, final Quality quality) {
+        return new Item(name, sellIn, quality);
     }
 
     public final void update() {
