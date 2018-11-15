@@ -16,6 +16,12 @@ class Inventory {
         return new Inventory(asList(items));
     }
 
+    void print(final InventoryPrinter inventoryPrinter) {
+        items.stream()
+                .map(Item::toString)
+                .forEach(inventoryPrinter::print);
+    }
+
     List<Item> getItems() {
         return items;
     }

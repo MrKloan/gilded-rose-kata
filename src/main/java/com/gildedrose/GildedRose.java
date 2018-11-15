@@ -4,9 +4,11 @@ import java.util.List;
 
 class GildedRose {
 
+    private Inventory inventory;
     private List<Item> items;
 
     GildedRose(final Inventory inventory) {
+        this.inventory = inventory;
         this.items = inventory.getItems();
     }
 
@@ -17,8 +19,6 @@ class GildedRose {
     }
 
     void printInventory(final InventoryPrinter inventoryPrinter) {
-        items.stream()
-                .map(Item::toString)
-                .forEach(inventoryPrinter::print);
+        inventory.print(inventoryPrinter);
     }
 }
