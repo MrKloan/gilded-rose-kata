@@ -17,6 +17,10 @@ public class Quality {
         return new Quality(value);
     }
 
+    static Quality none() {
+        return of(0);
+    }
+
     Quality increase() {
         if (value == MAXIMUM_QUALITY)
             return this;

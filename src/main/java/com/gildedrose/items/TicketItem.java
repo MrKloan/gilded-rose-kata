@@ -2,7 +2,6 @@ package com.gildedrose.items;
 
 public class TicketItem extends ImprovableItem {
 
-    private static final Quality NO_QUALITY = Quality.of(0);
     private static final int ELEVEN_DAYS = 11;
     private static final int SIX_DAYS = 6;
 
@@ -17,7 +16,7 @@ public class TicketItem extends ImprovableItem {
     @Override
     protected Quality computeQuality(final SellIn updatedSellIn) {
         if (updatedSellIn.isExpired())
-            return NO_QUALITY;
+            return Quality.none();
 
         Quality updatedQuality = updateQuality(quality);
         if (sellIn.lessThan(ELEVEN_DAYS))
