@@ -2,10 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.inventory.Inventory;
 import com.gildedrose.inventory.InventoryPrinter;
-import com.gildedrose.items.ImprovableItem;
-import com.gildedrose.items.Item;
-import com.gildedrose.items.LegendaryItem;
-import com.gildedrose.items.TicketItem;
+import com.gildedrose.items.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +22,7 @@ class GildedRoseAcceptanceTest {
     @DisplayName("decrease the sell in and quality of the stored item")
     void should_decrease_the_sell_in_and_quality_of_the_stored_item_when_the_inventory_is_updated() {
         final GildedRose gildedRose = new GildedRose(Inventory.of(
-                Item.of("Dummy", 1, 1)
+                Item.of("Dummy", SellIn.of(1), 1)
         ));
 
         gildedRose.updateInventory();
@@ -38,7 +35,7 @@ class GildedRoseAcceptanceTest {
     @DisplayName("decrease the quality of the stored item twice when its sell in is negative")
     void should_decrease_quality_of_the_stored_item_twice_when_the_inventory_is_updated_and_its_sell_in_is_negative() {
         final GildedRose gildedRose = new GildedRose(Inventory.of(
-                Item.of("Dummy", 0, 3)
+                Item.of("Dummy", SellIn.of(0), 3)
         ));
 
         gildedRose.updateInventory();
@@ -51,7 +48,7 @@ class GildedRoseAcceptanceTest {
     @DisplayName("not decrease the quality of the stored item below 0")
     void should_not_decrease_the_quality_of_the_stored_item_below_zero_when_the_inventory_is_updated() {
         final GildedRose gildedRose = new GildedRose(Inventory.of(
-                Item.of("Dummy", 3, 0)
+                Item.of("Dummy", SellIn.of(3), 0)
         ));
 
         gildedRose.updateInventory();

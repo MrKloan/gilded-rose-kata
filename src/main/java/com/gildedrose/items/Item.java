@@ -3,34 +3,34 @@ package com.gildedrose.items;
 public class Item {
 
     private final String name;
-    int sellIn;
+    SellIn sellIn;
     int quality;
 
-    Item(final String name, final int sellIn, final int quality) {
+    Item(final String name, final SellIn sellIn, final int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
     }
 
-    public static Item of(final String name, final int sellIn, final int quality) {
+    public static Item of(final String name, final SellIn sellIn, final int quality) {
         return new Item(name, sellIn, quality);
     }
 
     public final void update() {
-        final int updatedSellIn = updateSellIn(sellIn);
+        final SellIn updatedSellIn = updateSellIn();
 
         quality = updateQuality(updatedSellIn);
         sellIn = updatedSellIn;
     }
 
-    protected int updateSellIn(final int sellIn) {
-        return sellIn - 1;
+    protected SellIn updateSellIn() {
+        return sellIn.update();
     }
 
-    protected int updateQuality(final int updatedSellIn) {
+    protected int updateQuality(final SellIn updatedSellIn) {
         int updatedQuality = computeQuality(quality);
 
-        if (updatedSellIn < 0)
+        if (updatedSellIn.isExpired())
             updatedQuality = computeQuality(updatedQuality);
 
         return updatedQuality;
@@ -44,6 +44,6 @@ public class Item {
 
     @Override
     public final String toString() {
-        return "[" + this.name + "] Sell in: " + this.sellIn + ", Quality: " + this.quality;
+        return "[" + this.name + "] " + this.sellIn + ", Quality: " + this.quality;
     }
 }

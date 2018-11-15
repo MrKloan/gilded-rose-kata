@@ -11,7 +11,7 @@ class ItemTest {
     @Test
     @DisplayName("be formatted as a string")
     void should_format_the_item_as_a_string() {
-        final Item item = Item.of("Dummy", 3, 7);
+        final Item item = Item.of("Dummy", SellIn.of(3), 7);
 
         final String result = item.toString();
 

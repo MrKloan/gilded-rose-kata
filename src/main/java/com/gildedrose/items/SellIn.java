@@ -2,7 +2,7 @@ package com.gildedrose.items;
 
 import java.util.Objects;
 
-class SellIn {
+public class SellIn {
 
     private static final int EXPIRY_THRESHOLD = 0;
 
