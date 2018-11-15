@@ -22,7 +22,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Dummy", 1, 1)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Dummy] Sell in: 0, Quality: 0");
@@ -35,7 +35,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Dummy", 0, 3)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Dummy] Sell in: -1, Quality: 1");
@@ -48,7 +48,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Dummy", 3, 0)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Dummy] Sell in: 2, Quality: 0");
@@ -61,7 +61,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Sulfuras, Hand of Ragnaros", 0, 80)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Sulfuras, Hand of Ragnaros] Sell in: 0, Quality: 80");
@@ -74,7 +74,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Aged Brie", 3, 6)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Aged Brie] Sell in: 2, Quality: 7");
@@ -87,7 +87,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Aged Brie", 0, 5)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Aged Brie] Sell in: -1, Quality: 7");
@@ -100,7 +100,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Aged Brie", 7, 50)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Aged Brie] Sell in: 6, Quality: 50");
@@ -113,7 +113,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Backstage passes to a TAFKAL80ETC concert", 15, 20)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: 14, Quality: 21");
@@ -126,7 +126,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Backstage passes to a TAFKAL80ETC concert", 10, 20)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: 9, Quality: 22");
@@ -139,7 +139,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Backstage passes to a TAFKAL80ETC concert", 5, 20)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: 4, Quality: 23");
@@ -152,7 +152,7 @@ class GildedRoseAcceptanceTest {
                 Item.of("Backstage passes to a TAFKAL80ETC concert", 0, 20)
         ));
 
-        gildedRose.updateQuality();
+        gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: -1, Quality: 0");
