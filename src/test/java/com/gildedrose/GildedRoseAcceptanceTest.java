@@ -145,6 +145,19 @@ class GildedRoseAcceptanceTest {
         verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: 4, Quality: 23");
     }
 
+    @Test
+    @DisplayName("drop the quality of a ticket item to 0 when its sell in is negative")
+    void should_drop_the_quality_of_a_ticket_item_to_zero_when_the_inventory_is_updated_and_its_sell_in_negative() {
+        final GildedRose gildedRose = new GildedRose(inventory(
+                Item.of("Backstage passes to a TAFKAL80ETC concert", 0, 20)
+        ));
+
+        gildedRose.updateQuality();
+        gildedRose.printInventory(inventoryPrinter);
+
+        verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: -1, Quality: 0");
+    }
+
     private Item[] inventory(final Item item) {
         return new Item[]{item};
     }
