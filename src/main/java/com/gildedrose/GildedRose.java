@@ -1,13 +1,13 @@
 package com.gildedrose;
 
-import static java.util.Arrays.stream;
+import java.util.List;
 
 class GildedRose {
 
-    private Item[] items;
+    private List<Item> items;
 
-    GildedRose(Item[] items) {
-        this.items = items;
+    GildedRose(final Inventory inventory) {
+        this.items = inventory.getItems();
     }
 
     void updateInventory() {
@@ -17,7 +17,7 @@ class GildedRose {
     }
 
     void printInventory(final InventoryPrinter inventoryPrinter) {
-        stream(items)
+        items.stream()
                 .map(Item::toString)
                 .forEach(inventoryPrinter::print);
     }

@@ -3,7 +3,7 @@ package com.gildedrose;
 public class TextTestFixture {
 
     public static void main(String[] args) {
-        final Item[] items = new Item[]{
+        final Inventory inventory = Inventory.of(
                 Item.of("+5 Dexterity Vest", 10, 20),
                 Item.of("Aged Brie", 2, 0),
                 Item.of("Elixir of the Mongoose", 5, 7),
@@ -13,9 +13,9 @@ public class TextTestFixture {
                 Item.of("Backstage passes to a TAFKAL80ETC concert", 10, 49),
                 Item.of("Backstage passes to a TAFKAL80ETC concert", 5, 49),
                 Item.of("Conjured Mana Cake", 3, 6)
-        };
+        );
 
-        final GildedRose app = new GildedRose(items);
+        final GildedRose gilded = new GildedRose(inventory);
 
         int days = 2;
         if (args.length > 0) {
@@ -26,12 +26,12 @@ public class TextTestFixture {
             System.out.println("-------- day " + i + " --------");
             System.out.println("name, sellIn, quality");
 
-            for (final Item item : items) {
+            for (final Item item : inventory.getItems()) {
                 System.out.println(item);
             }
 
             System.out.println();
-            app.updateInventory();
+            gilded.updateInventory();
         }
     }
 }
