@@ -15,7 +15,7 @@ class SellIn {
     }
 
     boolean isExpired() {
-        return days < EXPIRY_THRESHOLD;
+        return lessThan(EXPIRY_THRESHOLD);
     }
 
     boolean lessThan(final int days) {
