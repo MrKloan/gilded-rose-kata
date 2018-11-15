@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.inventory.Inventory;
 import com.gildedrose.inventory.InventoryPrinter;
+import com.gildedrose.items.ImprovableItem;
 import com.gildedrose.items.Item;
 import com.gildedrose.items.LegendaryItem;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +23,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("decrease the sell in and quality of the stored item")
     void should_decrease_the_sell_in_and_quality_of_the_stored_item_when_the_inventory_is_updated() {
-        final GildedRose gildedRose = gildedRose("Dummy", 1, 1);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                Item.of("Dummy", 1, 1)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -33,7 +36,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("decrease the quality of the stored item twice when its sell in is negative")
     void should_decrease_quality_of_the_stored_item_twice_when_the_inventory_is_updated_and_its_sell_in_is_negative() {
-        final GildedRose gildedRose = gildedRose("Dummy", 0, 3);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                Item.of("Dummy", 0, 3)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -44,7 +49,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("not decrease the quality of the stored item below 0")
     void should_not_decrease_the_quality_of_the_stored_item_below_zero_when_the_inventory_is_updated() {
-        final GildedRose gildedRose = gildedRose("Dummy", 3, 0);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                Item.of("Dummy", 3, 0)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -68,7 +75,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("increase the quality of an improvable item")
     void should_increase_the_quality_of_an_improvable_item_when_the_inventory_is_updated() {
-        final GildedRose gildedRose = gildedRose("Aged Brie", 3, 6);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                ImprovableItem.of("Aged Brie", 3, 6)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -79,7 +88,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("increase the quality of an improvable item twice when its sell in is negative")
     void should_increase_the_quality_of_an_improvable_item_twice_when_the_inventory_is_updated_and_its_sell_in_is_negative() {
-        final GildedRose gildedRose = gildedRose("Aged Brie", 0, 5);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                ImprovableItem.of("Aged Brie", 0, 5)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -90,7 +101,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("not increase the quality of an improvable item above 50")
     void should_not_increase_the_quality_of_an_improvable_item_above_fifty_when_the_inventory_is_updated() {
-        final GildedRose gildedRose = gildedRose("Aged Brie", 7, 50);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                ImprovableItem.of("Aged Brie", 7, 50)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -101,7 +114,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("increase the quality of a ticket item when its sell in is greater than 10")
     void should_increase_the_quality_of_a_ticket_item_when_the_inventory_is_updated_and_its_sell_in_is_greater_than_ten() {
-        final GildedRose gildedRose = gildedRose("Backstage passes to a TAFKAL80ETC concert", 15, 20);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                ImprovableItem.of("Backstage passes to a TAFKAL80ETC concert", 15, 20)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -112,7 +127,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("increase the quality of a ticket item twice when its sell in is between 10 and 5")
     void should_increase_the_quality_of_a_ticket_item_twice_when_the_inventory_is_updated_and_its_sell_in_is_between_ten_and_five() {
-        final GildedRose gildedRose = gildedRose("Backstage passes to a TAFKAL80ETC concert", 10, 20);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                ImprovableItem.of("Backstage passes to a TAFKAL80ETC concert", 10, 20)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -123,7 +140,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("increase the quality of a ticket item thrice when its sell in is between 5 and 0")
     void should_increase_the_quality_of_a_ticket_item_thrice_when_the_inventory_is_updated_and_its_sell_in_is_between_five_and_zero() {
-        final GildedRose gildedRose = gildedRose("Backstage passes to a TAFKAL80ETC concert", 5, 20);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                ImprovableItem.of("Backstage passes to a TAFKAL80ETC concert", 5, 20)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
@@ -134,18 +153,14 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("drop the quality of a ticket item to 0 when its sell in is negative")
     void should_drop_the_quality_of_a_ticket_item_to_zero_when_the_inventory_is_updated_and_its_sell_in_negative() {
-        final GildedRose gildedRose = gildedRose("Backstage passes to a TAFKAL80ETC concert", 0, 20);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                ImprovableItem.of("Backstage passes to a TAFKAL80ETC concert", 0, 20)
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
 
         verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: -1, Quality: 0");
-    }
-
-    private GildedRose gildedRose(final String name, final int sellIn, final int quality) {
-        return new GildedRose(Inventory.of(
-                Item.of(name, sellIn, quality)
-        ));
     }
 
 }
