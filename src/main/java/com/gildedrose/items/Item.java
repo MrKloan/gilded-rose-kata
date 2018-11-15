@@ -6,7 +6,7 @@ public class Item {
     private int sellIn;
     private int quality;
 
-    private Item(String name, int sellIn, int quality) {
+    Item(final String name, final int sellIn, final int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
@@ -17,18 +17,17 @@ public class Item {
     }
 
     public void update() {
-        if (name.equals("Sulfuras, Hand of Ragnaros"))
-            return;
+        final int updatedSellIn = updateSellIn(sellIn);
 
-        final int updatedSellIn = this.sellIn - 1;
-
-        quality = computeQuality(quality);
-        quality = computeQualityAfterSellInUpdate(updatedSellIn, quality);
-
-        this.sellIn = updatedSellIn;
+        quality = updateQuality(updatedSellIn, quality);
+        sellIn = updatedSellIn;
     }
 
-    private int computeQuality(int quality) {
+    protected int updateSellIn(final int sellIn) {
+        return sellIn - 1;
+    }
+
+    protected int updateQuality(int updatedSellIn, int quality) {
         if (name.equals("Aged Brie")
                 || name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (quality < 50) {
@@ -52,11 +51,7 @@ public class Item {
             quality = quality - 1;
         }
 
-        return quality;
-    }
-
-    private int computeQualityAfterSellInUpdate(int sellIn, int quality) {
-        if (sellIn < 0) {
+        if (updatedSellIn < 0) {
             if (name.equals("Aged Brie")) {
                 if (quality < 50) {
                     quality = quality + 1;

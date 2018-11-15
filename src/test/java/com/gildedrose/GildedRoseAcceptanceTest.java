@@ -3,6 +3,7 @@ package com.gildedrose;
 import com.gildedrose.inventory.Inventory;
 import com.gildedrose.inventory.InventoryPrinter;
 import com.gildedrose.items.Item;
+import com.gildedrose.items.LegendaryItem;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,7 +55,9 @@ class GildedRoseAcceptanceTest {
     @Test
     @DisplayName("not decrease the sell in and quality of a legendary item")
     void should_not_decrease_the_sell_in_and_quality_of_a_legendary_item_when_the_inventory_is_updated() {
-        final GildedRose gildedRose = gildedRose("Sulfuras, Hand of Ragnaros", 0, 80);
+        final GildedRose gildedRose = new GildedRose(Inventory.of(
+                LegendaryItem.of("Sulfuras, Hand of Ragnaros")
+        ));
 
         gildedRose.updateInventory();
         gildedRose.printInventory(inventoryPrinter);
