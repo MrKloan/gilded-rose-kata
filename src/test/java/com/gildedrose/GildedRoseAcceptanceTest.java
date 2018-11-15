@@ -119,6 +119,19 @@ class GildedRoseAcceptanceTest {
         verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: 14, Quality: 21");
     }
 
+    @Test
+    @DisplayName("increase the quality of a ticket item twice when its sell in is between 10 and 5")
+    void should_increase_the_quality_of_a_ticket_item_twice_when_the_inventory_is_updated_and_its_sell_in_is_between_ten_and_five() {
+        final GildedRose gildedRose = new GildedRose(inventory(
+                Item.of("Backstage passes to a TAFKAL80ETC concert", 10, 20)
+        ));
+
+        gildedRose.updateQuality();
+        gildedRose.printInventory(inventoryPrinter);
+
+        verify(inventoryPrinter).print("[Backstage passes to a TAFKAL80ETC concert] Sell in: 9, Quality: 22");
+    }
+
     private Item[] inventory(final Item item) {
         return new Item[]{item};
     }
