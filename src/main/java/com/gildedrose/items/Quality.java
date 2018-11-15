@@ -24,7 +24,7 @@ public class Quality {
     }
 
     Quality decrease() {
-        throw new UnsupportedOperationException();
+        return of(value - 1);
     }
 
     @Override
