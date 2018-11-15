@@ -19,10 +19,10 @@ public class TicketItem extends ImprovableItem {
             return Quality.none();
 
         Quality updatedQuality = updateQuality(quality);
-        if (sellIn.lessThan(ELEVEN_DAYS))
+        if (updatedSellIn.lessThan(ELEVEN_DAYS))
             updatedQuality = updateQuality(updatedQuality);
 
-        if (sellIn.lessThan(SIX_DAYS))
+        if (updatedSellIn.lessThan(SIX_DAYS))
             updatedQuality = updateQuality(updatedQuality);
 
         return updatedQuality;
