@@ -54,6 +54,19 @@ class GildedRoseAcceptanceTest {
         verify(inventoryPrinter).print("[Dummy] Sell in: 2, Quality: 0");
     }
 
+    @Test
+    @DisplayName("not decrease the sell in and quality of a legendary item")
+    void should_not_decrease_the_sell_in_and_quality_of_a_legendary_item_when_the_inventory_is_updated() {
+        final GildedRose gildedRose = new GildedRose(inventory(
+                Item.of("Sulfuras, Hand of Ragnaros", 0, 80)
+        ));
+
+        gildedRose.updateQuality();
+        gildedRose.printInventory(inventoryPrinter);
+
+        verify(inventoryPrinter).print("[Sulfuras, Hand of Ragnaros] Sell in: 0, Quality: 80");
+    }
+
     private Item[] inventory(final Item item) {
         return new Item[]{item};
     }
