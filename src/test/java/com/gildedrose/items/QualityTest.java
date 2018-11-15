@@ -43,7 +43,7 @@ class QualityTest {
     void should_not_decrease_the_quality_when_its_value_is_equal_to_zero() {
         final Quality quality = Quality.of(0);
 
-        final Quality result = quality.increase();
+        final Quality result = quality.decrease();
 
         assertThat(result).isEqualTo(Quality.of(0));
     }

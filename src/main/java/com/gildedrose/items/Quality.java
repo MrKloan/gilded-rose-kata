@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Quality {
 
+    private static final int MAXIMUM_QUALITY = 50;
+
     private final int value;
 
     private Quality(final int value) {
@@ -15,6 +17,9 @@ public class Quality {
     }
 
     Quality increase() {
+        if (value == MAXIMUM_QUALITY)
+            return this;
+
         return of(value + 1);
     }
 
