@@ -15,7 +15,7 @@ public class Quality {
     }
 
     Quality increase() {
-        throw new UnsupportedOperationException();
+        return of(value + 1);
     }
 
     Quality decrease() {
